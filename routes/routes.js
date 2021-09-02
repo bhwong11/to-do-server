@@ -8,6 +8,8 @@ router.post('/',controller.todoController.create)
 
 router.delete('/:id',controller.todoController.destroy)
 
+router.put('/:id',controller.todoController.update)
+
 //router.get('/',(req,res)=>{
 //    return res.send('hi')
 //})

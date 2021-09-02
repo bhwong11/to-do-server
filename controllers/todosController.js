@@ -22,6 +22,16 @@ const create = async(req,res)=>{
     }
 }
 
+const update = async (req,res)=>{
+    try{
+        const updatedTodo = await db.Todo.findByIdAndUpdate(req.params.id,req.body,{new:true})
+        return res.status(200).json(updatedTodo)
+    }catch(error){
+        console.log(error)
+        return res.send('error occured:',error)
+    }
+}
+
 const destroy = async(req,res)=>{
     try{
         const deletedTodo = await db.Todo.findByIdAndDelete(req.params.id)
@@ -36,4 +46,5 @@ module.exports={
     index,
     create,
     destroy,
+    update,
 }
