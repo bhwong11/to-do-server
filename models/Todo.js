@@ -1,13 +1,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const GameSchema = new Schema({
-  title: String,
-  publisher: String,
-  coverArtUrl: String,
-  completed: Boolean,
+const TodoSchema = new Schema({
+  body: String,
+  completed:Boolean,
 });
 
-const Game = mongoose.model('Game', GameSchema);
+const Todo = mongoose.model('Todo', TodoSchema);
 
-module.exports = Game;
+module.exports = Todo;
