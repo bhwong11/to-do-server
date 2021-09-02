@@ -3,7 +3,7 @@ const db = require('../models');
 const index = async (req,res)=>{
     try{
         const allTodos = await db.Todo.find({})
-        res.status(200).json({
+        return res.status(200).json({
             todos:allTodos,
         })
     }catch(error){
@@ -12,10 +12,20 @@ const index = async (req,res)=>{
     };
 };
 
+const show = async(req,res)=>{
+    try{
+        const newTodo = await db.Todo.findById(req.params.id)
+        return res.status(200).json(newTodo)
+    }catch(error){
+        console.log(error)
+        return res.send('error occured:',error)
+    }
+}
+
 const create = async(req,res)=>{
     try{
         const newTodo = await db.Todo.create(req.body)
-        res.status(201).json(newTodo)
+        return res.status(201).json(newTodo)
     }catch(err){
         console.log(error)
         return res.send('error occured:',error)
@@ -47,4 +57,5 @@ module.exports={
     create,
     destroy,
     update,
+    show,
 }
