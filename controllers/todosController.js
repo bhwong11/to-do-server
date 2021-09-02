@@ -12,6 +12,17 @@ const index = async (req,res)=>{
     };
 };
 
+const create = async(req,res)=>{
+    try{
+        const newTodo = await db.Todo.create(req.body)
+        res.status(201).json(newTodo)
+    }catch(err){
+        console.log(error)
+        return res.send('error occured:',error)
+    }
+}
+
 module.exports={
     index,
+    create,
 }
