@@ -1,4 +1,4 @@
-const db = '../models';
+const db = require('../models');
 
 
 //delete
