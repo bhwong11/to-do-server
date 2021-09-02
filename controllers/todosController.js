@@ -22,7 +22,18 @@ const create = async(req,res)=>{
     }
 }
 
+const destroy = async(req,res)=>{
+    try{
+        const deletedTodo = await db.Todo.findByIdAndDelete(req.params.id)
+        return res.status(200).json(deletedTodo)
+    }catch(error){
+        console.log(error)
+        return res.send('error occured:',error)
+    }
+}
+
 module.exports={
     index,
     create,
+    destroy,
 }
